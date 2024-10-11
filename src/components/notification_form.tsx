@@ -1,9 +1,9 @@
-function Management(){
+function NotificationForm(){
   return(
-    <form action="http://localhost:4000/notifications/send" method="post" className="form-example">
+    <form action="http://localhost:4000/" method="post" className="form-example">
       <div className="form-example">
-        <label htmlFor="token">token: </label>
-        <input type="text" name="token" id="token" required />
+        <label htmlFor="token">title: </label>
+        <input type="text" name="title" id="title" required />
       </div>
       <div className="form-example">
         <label htmlFor="title">title: </label>
@@ -19,4 +19,4 @@ function Management(){
     </form>
   );
 }
-export default Management;
+export default NotificationForm;
