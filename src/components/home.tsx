@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 function Home(){
   const navigate = useNavigate()
-  const handleInboxFormView = () => {
+  const handleRegisterFormView = () => {
     navigate('/register')
+  }
+  const handleInboxFormView = () => {
+    navigate('/inbox')
   }
   const handleNotificationFormView = () => {
     navigate('/notification')
@@ -13,7 +16,9 @@ function Home(){
   }
   return (
     <>
-      <button onClick={handleInboxFormView}>DB更新画面へ</button>
+      <button onClick={handleRegisterFormView}>商品・店舗情報更新画面へ</button>
+      <br />
+      <button onClick={handleInboxFormView}>お知らせ送信画面へ</button>
       <br />
       <button onClick={handleNotificationFormView}>全体通知送信画面へ</button>
       <br />

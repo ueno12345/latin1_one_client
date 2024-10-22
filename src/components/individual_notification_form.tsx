@@ -1,5 +1,9 @@
 function IndividualNotificationForm(){
   return(
+    <div>
+    <h2>個別通知送信画面</h2>
+    <br />
+    <br />
     <form action="http://localhost:4000/notifications/individual" method="post" className="individual">
       <div className="individual">
         <label htmlFor="token">token: </label>
@@ -17,6 +21,7 @@ function IndividualNotificationForm(){
         <input type="submit" value="送信" />
       </div>
     </form>
+    </div>
   );
 }
 export default IndividualNotificationForm;
