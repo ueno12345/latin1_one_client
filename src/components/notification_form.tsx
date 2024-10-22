@@ -6,8 +6,14 @@ function NotificationForm(){
     <br />
       <form action="http://localhost:4000/notifications/whole" method="post" className="notification">
         <div className="notification">
-          <label htmlFor="topic">topic: </label>
-          <input type="text" name="topic" id="topic" required />
+          <label>
+            通知の種類:
+            <select name="topic" id="topic" defaultValue="information">
+              <option value="shop">新店舗</option>
+              <option value="product">新商品</option>
+              <option value="information">新情報</option>
+            </select>
+          </label>
         </div>
         <div className="notification">
           <label htmlFor="title">title: </label>

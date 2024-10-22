@@ -6,8 +6,14 @@ function InboxForm(){
       <br />
       <form action="http://localhost:4000/register/inbox" method="post" className="inbox">
         <div className="inbox">
-          <label htmlFor="date">date: </label>
-          <input type="text" name="date" id="date" required />
+          <label>
+            通知の種類:
+            <select name="topic" id="topic" defaultValue="information">
+              <option value="shop">新店舗</option>
+              <option value="product">新商品</option>
+              <option value="information">新情報</option>
+            </select>
+          </label>
         </div>
         <div className="inbox">
           <label htmlFor="title">title: </label>
@@ -20,6 +26,9 @@ function InboxForm(){
         <div className="inbox">
           <label htmlFor="image">image-path: </label>
           <input type="text" name="image" id="image" required />
+        </div>
+        <div className="inbox">
+          <input type="submit" value="送信" />
         </div>
       </form>
     </div>
