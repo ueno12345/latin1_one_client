@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import './inbox_register_form.css';
 
 function InboxForm() {
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate('/');
+  };
   return (
     <div className="inbox-container">
       <h2>お知らせ送信画面</h2>
@@ -27,6 +33,11 @@ function InboxForm() {
         </div>
         <div className="form-group">
           <input type="submit" value="送信" className="submit-button" />
+        </div>
+        <div className="form-group">
+          <button type="button" className="home-button" onClick={navigateToHome}>
+            ホームに戻る
+          </button>
         </div>
       </form>
     </div>

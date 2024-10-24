@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import './register_form.css';
 
 function RegisterForm() {
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate('/');
+  };
+
   return (
     <div className="register-container">
       <h2>商品・店舗情報更新画面</h2>
@@ -28,6 +35,11 @@ function RegisterForm() {
         </div>
         <div className="form-group">
           <input type="submit" value="追加" className="submit-button" />
+        </div>
+        <div className="form-group">
+          <button type="button" className="home-button" onClick={navigateToHome}>
+            ホームに戻る
+          </button>
         </div>
       </form>
     </div>

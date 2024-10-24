@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import './notification_form.css';
 
 function NotificationForm() {
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate('/');
+  };
   return (
     <div className="notification-container">
       <h2>全体通知送信画面</h2>
@@ -25,6 +31,11 @@ function NotificationForm() {
         </div>
         <div className="form-group">
           <input type="submit" value="送信" className="submit-button" />
+        </div>
+        <div className="form-group">
+          <button type="button" className="home-button" onClick={navigateToHome}>
+            ホームに戻る
+          </button>
         </div>
       </form>
     </div>

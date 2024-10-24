@@ -22,19 +22,20 @@ function Home() {
 
   return (
     <div className="home-container">
-      <button className="home-button" onClick={handleRegisterFormView}>
+      <h2>ホーム画面</h2>
+      <button className="homepage-button" onClick={handleRegisterFormView}>
         商品・店舗情報更新画面へ
       </button>
-      <button className="home-button" onClick={handleInboxFormView}>
+      <button className="homepage-button" onClick={handleInboxFormView}>
         お知らせ送信画面へ
       </button>
-      <button className="home-button" onClick={handleNotificationFormView}>
+      <button className="homepage-button" onClick={handleNotificationFormView}>
         全体通知送信画面へ
       </button>
-      <button className="home-button" onClick={handleIndividualFormView}>
+      <button className="homepage-button" onClick={handleIndividualFormView}>
         個人通知送信画面へ
       </button>
-      <button className="home-button" onClick={handleExcelView}>
+      <button className="homepage-button" onClick={handleExcelView}>
         excel画面へ
       </button>
     </div>

@@ -12,8 +12,16 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつける */
 }
 
+/* フォームのタイトルスタイル */
+.home-container h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
 /* 各ボタンのスタイル */
-.home-button {
+.homepage-button {
   background-color: #4CAF50; /* ボタンの背景色 */
   color: white; /* ボタンの文字色 */
   padding: 15px 30px; /* ボタン内側の余白 */
@@ -27,7 +35,7 @@
 }
 
 /* ボタンのホバー時のスタイル */
-.home-button:hover {
+.homepage-button:hover {
   background-color: #45a049; /* ホバー時に色を変更 */
   transform: scale(1.05); /* ホバー時にボタンを少し大きくする */
 }
