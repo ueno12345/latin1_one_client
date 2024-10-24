@@ -14,6 +14,9 @@ function Home(){
   const handleIndividualFormView = () => {
     navigate('/individual')
   }
+  const handleExcelView = () => {
+    navigate('/excel')
+  }
   return (
     <>
       <button onClick={handleRegisterFormView}>商品・店舗情報更新画面へ</button>
@@ -23,6 +26,8 @@ function Home(){
       <button onClick={handleNotificationFormView}>全体通知送信画面へ</button>
       <br />
       <button onClick={handleIndividualFormView}>個人通知送信画面へ</button>
+      <br />
+      <button onClick={handleExcelView}>excel画面へ</button>
     </>
   )
 }

@@ -5,6 +5,7 @@ import RegisterForm from "./components/register_form";
 import InboxRegisterForm from "./components/inbox_register_form";
 import NotificationForm from "./components/notification_form";
 import IndividualNotificationForm from "./components/individual_notification_form";
+import Excel from "./components/excel";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/inbox" element={<InboxRegisterForm />} />
         <Route path="/notification" element={<NotificationForm />} />
         <Route path="/individual" element={<IndividualNotificationForm />} />
+        <Route path="/excel" element={<Excel />} />
       </Routes>
     </BrowserRouter>
   );
