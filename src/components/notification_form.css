@@ -1,0 +1,78 @@
+/* コンテナ全体のスタイル */
+.notification-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f9f9fc; /* register-container の背景色に合わせる */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* フォームのタイトル */
+.notification-container h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333; /* register-container の色に合わせる */
+  margin-bottom: 30px;
+}
+
+/* フォームグループのスタイル */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ラベルのスタイル */
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #555; /* register-container の色に合わせる */
+}
+
+/* セレクトボックスと入力フィールドのスタイル */
+.form-control {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc; /* register-container の枠線色に合わせる */
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3498db; /* register-container のフォーカス時の色に合わせる */
+  outline: none;
+}
+
+/* 送信ボタンのスタイル */
+.submit-button {
+  background-color: #3498db; /* register-container のボタン色に合わせる */
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #2980b9; /* register-container のホバー時の色に合わせる */
+  transform: scale(1.05);
+}
+
+/* モバイル対応: スマホ画面での調整 */
+@media (max-width: 600px) {
+  .notification-container {
+    padding: 20px;
+  }
+
+  .form-control {
+    font-size: 14px;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

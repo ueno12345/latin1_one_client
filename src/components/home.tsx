@@ -1,34 +1,44 @@
 import { useNavigate } from "react-router-dom";
+import './home.css';
 
-function Home(){
-  const navigate = useNavigate()
+function Home() {
+  const navigate = useNavigate();
+
   const handleRegisterFormView = () => {
-    navigate('/register')
-  }
+    navigate('/register');
+  };
   const handleInboxFormView = () => {
-    navigate('/inbox')
-  }
+    navigate('/inbox');
+  };
   const handleNotificationFormView = () => {
-    navigate('/notification')
-  }
+    navigate('/notification');
+  };
   const handleIndividualFormView = () => {
-    navigate('/individual')
-  }
+    navigate('/individual');
+  };
   const handleExcelView = () => {
-    navigate('/excel')
-  }
+    navigate('/excel');
+  };
+
   return (
-    <>
-      <button onClick={handleRegisterFormView}>商品・店舗情報更新画面へ</button>
-      <br />
-      <button onClick={handleInboxFormView}>お知らせ送信画面へ</button>
-      <br />
-      <button onClick={handleNotificationFormView}>全体通知送信画面へ</button>
-      <br />
-      <button onClick={handleIndividualFormView}>個人通知送信画面へ</button>
-      <br />
-      <button onClick={handleExcelView}>excel画面へ</button>
-    </>
-  )
+    <div className="home-container">
+      <button className="home-button" onClick={handleRegisterFormView}>
+        商品・店舗情報更新画面へ
+      </button>
+      <button className="home-button" onClick={handleInboxFormView}>
+        お知らせ送信画面へ
+      </button>
+      <button className="home-button" onClick={handleNotificationFormView}>
+        全体通知送信画面へ
+      </button>
+      <button className="home-button" onClick={handleIndividualFormView}>
+        個人通知送信画面へ
+      </button>
+      <button className="home-button" onClick={handleExcelView}>
+        excel画面へ
+      </button>
+    </div>
+  );
 }
+
 export default Home;

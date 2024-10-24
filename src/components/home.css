@@ -1,0 +1,45 @@
+/* コンテナ全体のスタイル */
+.home-container {
+  display: flex;
+  flex-direction: column; /* 縦にボタンを並べる */
+  align-items: center; /* ボタンを中央揃え */
+  gap: 20px; /* ボタン間のスペース */
+  padding: 40px;
+  background-color: #f7f7f7; /* 背景色 */
+  border-radius: 8px; /* 角を丸くする */
+  max-width: 500px; /* 最大幅 */
+  margin: 0 auto; /* 中央に配置 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつける */
+}
+
+/* 各ボタンのスタイル */
+.home-button {
+  background-color: #4CAF50; /* ボタンの背景色 */
+  color: white; /* ボタンの文字色 */
+  padding: 15px 30px; /* ボタン内側の余白 */
+  border: none; /* 枠線を消す */
+  border-radius: 5px; /* ボタンの角を丸くする */
+  cursor: pointer; /* ポインターを表示 */
+  font-size: 16px; /* フォントサイズ */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* ホバー時のアニメーション */
+  width: 100%; /* ボタンを最大幅に */
+  max-width: 400px; /* ボタンの最大幅 */
+}
+
+/* ボタンのホバー時のスタイル */
+.home-button:hover {
+  background-color: #45a049; /* ホバー時に色を変更 */
+  transform: scale(1.05); /* ホバー時にボタンを少し大きくする */
+}
+
+/* モバイル対応: スマホ画面サイズでのボタンの幅を調整 */
+@media (max-width: 600px) {
+  .home-container {
+    padding: 20px;
+  }
+
+  .home-button {
+    font-size: 14px; /* フォントサイズを少し小さく */
+    padding: 10px 20px; /* ボタン内側の余白を調整 */
+  }
+}
