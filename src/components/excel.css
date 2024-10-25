@@ -7,7 +7,13 @@
   border-radius: 8px; /* 角を丸める */
   max-width: 400px; /* 最大幅を設定 */
   margin: 0 auto; /* 中央寄せ */
-  background-color: #f9f9f9; /* 背景色 */
+  background: linear-gradient(135deg, #f9f9f9, #eaeaea); /* グラデーション背景 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
+  transition: transform 0.3s ease; /* ホバー時の変化 */
+}
+
+.excel-container:hover {
+  transform: translateY(-5px); /* ホバー時に少し上に移動 */
 }
 
 .download-section {
@@ -22,6 +28,7 @@
   padding: 10px 20px; /* 内側の余白 */
   cursor: pointer; /* カーソルをポインタに */
   font-size: 16px; /* フォントサイズ */
+  transition: background-color 0.3s ease; /* ホバー時の色の変化 */
 }
 
 .download-button:hover {
@@ -44,6 +51,7 @@
   cursor: pointer; /* カーソルをポインタに */
   font-size: 16px; /* フォントサイズ */
   margin-top: 10px; /* ボタンの上にスペースを追加 */
+  transition: background-color 0.3s ease; /* ホバー時の色の変化 */
 }
 
 .select-file-button:hover,
@@ -54,4 +62,22 @@
 .file-name {
   margin-top: 10px; /* ファイル名の上にスペースを追加 */
   font-weight: bold; /* 太字 */
+  color: #333; /* テキストカラー */
+}
+
+/* 追加のスタイル: ドロップダウンリスト */
+label {
+  display: block; /* ラベルをブロック要素に */
+  margin-bottom: 10px; /* 下にスペースを追加 */
+  font-size: 16px; /* フォントサイズ */
+  color: #555; /* テキストカラー */
+}
+
+select {
+  padding: 8px; /* 内側の余白 */
+  border: 1px solid #ccc; /* 枠線 */
+  border-radius: 5px; /* 角を丸める */
+  font-size: 14px; /* フォントサイズ */
+  margin-top: 5px; /* 上にスペースを追加 */
+  width: 100%; /* 幅を100%に */
 }

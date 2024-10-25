@@ -1,31 +1,35 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
-import './excel.css'; // スタイルを外部CSSファイルに分ける
+import './excel.css';
 
 function Excel() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null); // 選択されたファイル名を保存するステート
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [dataType, setDataType] = useState('product'); // データタイプのステートを追加
 
-  const downloadExcel = async () => {
+  const downloadExcel = async (dataType: string) => {
     try {
-      const response = await axios.get('http://localhost:4000/excel/download', {
-        responseType: 'blob',
-      });
+      const response = await axios.post(
+        'http://localhost:4000/excel/download',
+        { dataType },
+        { responseType: 'blob' }
+      );
+
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'example.xlsx');
+      link.setAttribute('download', `${dataType}_data.xlsx`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } catch (error) {
-      console.error('Excelファイルのダウンロードに失敗しました:', error);
+      console.error('ファイルのダウンロードに失敗しました:', error);
     }
   };
 
   const uploadExcel = async () => {
     if (fileInputRef.current?.files) {
-      const file = fileInputRef.current.files[0]; // ファイルを取得
+      const file = fileInputRef.current.files[0];
       if (!file) {
         console.error('ファイルが選択されていません');
         return;
@@ -52,14 +56,31 @@ function Excel() {
   const handleFileChange = () => {
     if (fileInputRef.current?.files) {
       const file = fileInputRef.current.files[0];
-      setFileName(file ? file.name : null); // 選択されたファイル名をセット
+      setFileName(file ? file.name : null);
     }
   };
 
   return (
     <div className="excel-container">
       <div className="download-section">
-        <button className="download-button" onClick={downloadExcel}>Excelをダウンロード</button>
+        <label htmlFor="dataType">
+          追加・編集するデータの種類:
+          <select
+            name="dataType"
+            id="dataType"
+            value={dataType}
+            onChange={(e) => setDataType(e.target.value)} // 選択された値をステートに設定
+          >
+            <option value="product">商品データ</option>
+            <option value="shop">店舗データ</option>
+          </select>
+        </label>
+        <button
+          className="download-button"
+          onClick={() => downloadExcel(dataType)}
+        >
+          Excelをダウンロード
+        </button>
       </div>
       <div className="upload-section">
         <input 
@@ -67,10 +88,10 @@ function Excel() {
           ref={fileInputRef} 
           accept='.xlsx' 
           onChange={handleFileChange} 
-          style={{ display: 'none' }} // ファイル入力を隠す
+          style={{ display: 'none' }}
         />
         <button className="select-file-button" onClick={() => fileInputRef.current?.click()}>ファイルを選択</button>
-        {fileName && <p className="file-name">選択されたファイル: {fileName}</p>} {/* 選択されたファイル名を表示 */}
+        {fileName && <p className="file-name">選択されたファイル: {fileName}</p>}
         <button className="upload-button" onClick={uploadExcel}>Excelをアップロード</button>
       </div>
     </div>
