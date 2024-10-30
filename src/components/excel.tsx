@@ -34,19 +34,20 @@ function Excel() {
         console.error('ファイルが選択されていません');
         return;
       }
-
       const formData = new FormData();
       formData.append('file', file);
-
       try {
-        await axios.post('http://localhost:4000/excel/upload', formData, {
+        const response = await axios.post('http://localhost:4000/excel/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
-        console.log('ファイルアップロード成功');
+        // サーバーからのレスポンスを表示
+        console.log('ファイルアップロード成功:', response.data);
+        alert(response.data.message);
       } catch (error) {
         console.error('ファイルアップロード失敗:', error);
+        alert('ファイルアップロードに失敗しました');
       }
     } else {
       console.error('ファイルが選択されていません');
