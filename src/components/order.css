@@ -1,0 +1,75 @@
+/* 注文データのテーブルスタイル */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-table th, .order-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.order-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.order-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.order-table tr:hover {
+  background-color: #e8f7e8;
+  cursor: pointer;
+}
+
+.filter-form {
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  margin-bottom: 10px;
+}
+
+.filter-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.home-button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.home-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background-color: #45a049;
+}
+
+
+/* モバイル対応: スマホ画面での調整 */
+@media (max-width: 600px) {
+  .order-table th, .order-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

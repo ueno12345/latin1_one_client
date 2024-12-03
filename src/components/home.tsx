@@ -19,6 +19,9 @@ function Home() {
   const handleExcelView = () => {
     navigate('/excel');
   };
+  const handleOrderView = () => {
+    navigate('/order');
+  };
 
   return (
     <div className="home-container">
@@ -37,6 +40,9 @@ function Home() {
       </button>
       <button className="homepage-button" onClick={handleExcelView}>
         excel画面へ
+      </button>
+      <button className="homepage-button" onClick={handleOrderView}>
+        注文状況確認画面へ
       </button>
     </div>
   );
