@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './order.css';
 
@@ -14,6 +14,7 @@ interface Order {
   'order-time': string;
   'mail-address': string;
   '店舗': string;
+  'token': string;
 }
 
 function Order() {
@@ -25,7 +26,7 @@ function Order() {
   const [nicknameFilter, setNicknameFilter] = useState<string>("");
   const [nameFilter, setNameFilter] = useState<string>("");
   const [storeFilter, setStoreFilter] = useState<string>("");
-  const [orderDateFilter, setOrderDateFilter] = useState<Date | null>(null);
+//  const [orderDateFilter, setOrderDateFilter] = useState<Date | null>(null);
 
   const fetchOrders = async () => {
     const response = await fetch('http://localhost:4000/acquire/order', {
@@ -73,24 +74,50 @@ function Order() {
       );
     }
 
-// 注文日時で絞り込み（選択した日付と一致するか比較）
-if (orderDateFilter) {
-  const formattedOrderDateFilter = orderDateFilter.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
+// // 注文日時で絞り込み（選択した日付と一致するか比較）
+// if (orderDateFilter) {
+//   const formattedOrderDateFilter = orderDateFilter.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
+// 
+//   filtered = filtered.filter(order => {
+//     // 注文日時をDateオブジェクトに変換
+//     const orderDate = new Date(order['order-time']);
+//     const formattedOrderDate = orderDate.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
+// 
+//     return formattedOrderDate === formattedOrderDateFilter; // 日付部分だけ比較
+//   });
+// }
 
-  filtered = filtered.filter(order => {
-    // 注文日時をDateオブジェクトに変換
-    const orderDate = new Date(order['order-time']);
-    const formattedOrderDate = orderDate.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
-
-    return formattedOrderDate === formattedOrderDateFilter; // 日付部分だけ比較
-  });
-}
-
+//  setFilteredOrders(filtered);
+//  }, [nicknameFilter, nameFilter, storeFilter, orderDateFilter, orders]);
+//
     setFilteredOrders(filtered);
-  }, [nicknameFilter, nameFilter, storeFilter, orderDateFilter, orders]);
+  }, [nicknameFilter, nameFilter, storeFilter, orders]);
 
-  const navigateToHome = () => {
-    navigate('/');
+  const updateDeliveryStatus = async (order: Order) => {
+    try {
+      const response = await fetch("http://localhost:4000/register/updateDeliveryStatus", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: order["token"],
+          product: order["注文商品"],
+          timestamp: order["order-time"],
+          newStatus: !order["配送状況"],
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("配送状況を更新しました");
+        fetchOrders(); // データを再取得して反映
+      } else {
+        console.error("配送状況の更新に失敗しました");
+      }
+    } catch (error) {
+      console.error("エラー:", error);
+    }
   };
 
   return (
@@ -127,7 +154,9 @@ if (orderDateFilter) {
             placeholder="店舗名で絞り込み"
           />
         </div>
+      </div>
 
+{/*
         <div className="filter-group">
           <label>注文日時で絞り込み：</label>
           <DatePicker
@@ -138,10 +167,10 @@ if (orderDateFilter) {
             isClearable
           />
         </div>
-      </div>
+*/}
 
       <div className="home-button-container">
-        <button type="button" onClick={navigateToHome} className="home-button">
+        <button type="button" onClick={() => navigate('/')} className="home-button">
           ホームに戻る
         </button>
       </div>
@@ -169,7 +198,9 @@ if (orderDateFilter) {
                 <td>{order['注文商品']}</td>
                 <td>{order['注文合計']}</td>
                 <td>{order['配送先']}</td>
-                <td>{order['配送状況'] ? "配送完了" : "配送待ち"}</td>
+                <td onClick={() => updateDeliveryStatus(order)} style={{ cursor: "pointer", color: "blue" }}>
+                  {order["配送状況"] ? "配送完了" : "配送待ち"}
+                </td>
                 <td>{order['order-time']}</td>
                 <td>{order['mail-address']}</td>
                 <td>{order['店舗']}</td>
