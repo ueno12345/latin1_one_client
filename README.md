@@ -27,7 +27,7 @@ There are six screens in this management console.
 
 # Setup
 ## latin1_one_client
-1. Download modernTimes
+1. Download latin1_one_client
    ```bash
    $ git clone https://github.com:ueno12345/latin1_one_client.git
    ```
